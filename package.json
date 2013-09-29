@@ -11,7 +11,10 @@
     "type": "git",
     "url": "ssh://git@bitbucket.org/cflynn_us/rlotranslate.git"
   },
-  "author": "Casey Flynn",
+  "author": {
+    "name": "Casey Flynn",
+    "email": "casey.flynn@rakutenloyalty.com"
+  },
   "licenses": [
     {
       "type": "MIT",
@@ -23,6 +26,11 @@
   },
   "dependencies": {
     "optimist": "~0.6.0",
-    "coffee-script": "~1.6.3"
+    "coffee-script": "~1.6.3",
+    "exec-sync": "~0.1.6",
+    "underscore": "~1.5.2"
+  },
+  "devDependencies": {
+    "buster": "~0.7.6"
   }
 }
