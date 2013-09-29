@@ -1,0 +1,28 @@
+{
+  "name": "rlotranslate",
+  "version": "0.0.1",
+  "description": "Utility to manage translations in multi-lingual, angularjs-based web applications.",
+  "main": "lib",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "lib/install.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@bitbucket.org/cflynn_us/rlotranslate.git"
+  },
+  "author": "Casey Flynn",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/bower/bower/blob/master/LICENSE"
+    }
+  ],
+  "bin": {
+    "rlotranslate": "bin/wrapper.js"
+  },
+  "dependencies": {
+    "optimist": "~0.6.0",
+    "coffee-script": "~1.6.3"
+  }
+}
