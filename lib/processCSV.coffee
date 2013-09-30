@@ -43,12 +43,10 @@ module.exports = (path, file) ->
 
     switch mode
       when 'language'
-
         for prop, value of languageObjectsIndexes
           languageObjects[prop]['language'][row[0]] = row[value+1]
 
       when 'keys'
-
         for prop, value of languageObjectsIndexes
           tmp                         = {}
           tmp['key']                  = row[0]
