@@ -5,11 +5,12 @@ _             = require 'underscore'
 argv          = require('optimist').argv
 clearTerminal = require '../lib/clearTerminal'
 validateUsage = require '../lib/validateUsage'
+processCSV    = require '../lib/processCSV'
 config        = require '../lib/config'
 execSync      = require 'exec-sync'
 pwd           = execSync 'pwd'
 
-clearTerminal()
+#clearTerminal()
 
 options = _.extend {}, config.optionDefaults
 
@@ -17,7 +18,11 @@ options = _.extend {}, config.optionDefaults
 command = validateUsage options, argv
 
 if options.h
-  console.log 'help coming soon...'
+  console.log config.messages.badUsageFormat
+  process.exit 0
+
+if options.v
+  console.log require('../package').version
   process.exit 0
 
 switch command
@@ -25,9 +30,19 @@ switch command
     path = pwd + '/' + options.d
 
     if !fs.existsSync path
-      console.log 'Error: directory does not exist: ' + path
+      console.log 'Error: directory does not exist: ' + path + "\n"
       process.exit 1
 
     dirContents = fs.readdirSync path
-    console.log 'dirContents'
-    console.log dirContents
+    dirContents = _.filter dirContents, (item) ->
+      stats = fs.statSync(path + '/' + item)
+      return (item.indexOf('.csv') == (item.length - 4)) && stats.isFile()
+
+    if !dirContents.length
+      console.log 'Error: directory empty. No translation files found.' + "\n"
+      process.exit 1
+
+    console.log 'Found ' + dirContents.length + ' translation files...' + "\n"
+
+    for val in dirContents
+      processCSV path, val

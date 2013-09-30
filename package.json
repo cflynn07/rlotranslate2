@@ -5,7 +5,8 @@
   "main": "lib",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "install": "lib/install.sh"
+    "install": "lib/install.sh",
+    "prepublish": "lib/install.sh"
   },
   "repository": {
     "type": "git",
@@ -28,7 +29,8 @@
     "optimist": "~0.6.0",
     "coffee-script": "~1.6.3",
     "exec-sync": "~0.1.6",
-    "underscore": "~1.5.2"
+    "underscore": "~1.5.2",
+    "csv": "~0.3.6"
   },
   "devDependencies": {
     "buster": "~0.7.6"

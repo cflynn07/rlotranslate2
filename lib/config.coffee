@@ -4,8 +4,9 @@ config =
     'reverse'
   ]
   optionDefaults:
-    d: 'i18n_csv'
+    d: 'i18n_masters'
     h: false
+    v: false
   messages:
     badUsageFormat: 'Format: ' + process.title + ' [generate/reverse] -d [options]' + "\n"
 

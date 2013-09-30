@@ -14,8 +14,8 @@ module.exports = (options,
   else if _.contains config.availableCommands, argv['_'][0]
     command = argv['_'][0]
   else
-      console.log config.messages.badUsageFormat
-      process.exit 1
+    console.log config.messages.badUsageFormat
+    process.exit 1
 
   #Check for valid options
   for key, value of argv
