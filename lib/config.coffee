@@ -9,15 +9,22 @@ config =
     d:             'i18n_masters'
     h:             false
     v:             false
+    o:             false
+
     input:         false
     output:        false
     inputLangName: false
+
   messages:
-    badUsageFormat: format
+#   badUsageaFormat: format
     help: format + "\n
       [options]\n
       -h    help\n
       -v    version\n
-      -d    directory of i18n_master files\n"
+      -d    directory of i18n_master files\n
+            (default == ./i18n_masters )\n
+      -o    output directory of generated files\n
+            (default == ./path-specified-in-csv-file)"
+
 
 module.exports = config

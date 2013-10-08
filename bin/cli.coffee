@@ -13,8 +13,6 @@ pwd           = execSync 'pwd'
 
 #clearTerminal()
 
-console.log config.messages.help
-
 #create a copy of original options
 options = _.extend {}, config.optionDefaults
 
@@ -22,7 +20,7 @@ options = _.extend {}, config.optionDefaults
 command = validateUsage options, argv
 
 if options.h
-  console.log config.messages.badUsageFormat
+  console.log config.messages.help
   process.exit 0
 
 if options.v
