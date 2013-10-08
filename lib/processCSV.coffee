@@ -39,7 +39,10 @@ module.exports = (path, file) ->
 
         languageObjects[valLanguageCode] =
           language: {}
-          lexicon:  []
+          lexicon:
+            language: 'default'
+            country:  null
+            entries:  []
         languageObjectsIndexes[valLanguageCode] = i - 1
       return
 
@@ -64,7 +67,7 @@ module.exports = (path, file) ->
           tmp['description']          = row[2]
           tmp['additionalProperties'] = row[3]
           tmp['translation']          = row[4 + i]
-          languageObjects[propLanguageCode]['lexicon'].push tmp
+          languageObjects[propLanguageCode]['lexicon']['entries'].push tmp
 
       when 'specialkeys'
 
