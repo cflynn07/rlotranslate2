@@ -6,12 +6,16 @@ argv          = require('optimist').argv
 clearTerminal = require '../lib/clearTerminal'
 validateUsage = require '../lib/validateUsage'
 processCSV    = require '../lib/processCSV'
+processJSON   = require '../lib/processJSON'
 config        = require '../lib/config'
 execSync      = require 'exec-sync'
 pwd           = execSync 'pwd'
 
 #clearTerminal()
 
+console.log config.messages.help
+
+#create a copy of original options
 options = _.extend {}, config.optionDefaults
 
 #Will exit if improper usage, mutates optionDefaults
@@ -46,3 +50,10 @@ switch command
 
     for val in dirContents
       processCSV path, val
+
+  when 'reverse'
+    if !options.input || !options.output || !options.inputLangName
+      console.log 'Error: options -input and -output and -inputLangName required' + "\n"
+      process.exit 1
+
+    processJSON pwd, options.input, options.inputLangName, options.output
