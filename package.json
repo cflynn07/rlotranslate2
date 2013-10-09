@@ -1,6 +1,6 @@
 {
   "name": "rlotranslate",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Utility to manage translations in multi-lingual, angularjs-based web applications.",
   "main": "lib",
   "scripts": {
