@@ -28,7 +28,9 @@ config =
       -d    directory of i18n_master files\n
             (default == ./i18n_masters )\n
       -o    output directory of generated files\n
-            (default == ./path-specified-in-csv-file)"
+            (default == ./path-specified-in-csv-file)\n
+      -l    specify which locales to generate files for\n
+            (separate by commas, ex: fr,de,ja,en)"
 
 
 module.exports = config
