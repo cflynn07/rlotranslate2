@@ -16,7 +16,7 @@ pwd           = execSync 'pwd'
 #create a copy of original options
 options = _.extend {}, config.optionDefaults
 
-#Will exit if improper usage, mutates optionDefaults
+#Will exit if improper usage, mutates options
 command = validateUsage options, argv
 
 if options.h
@@ -28,7 +28,7 @@ if options.v
   process.exit 0
 
 switch command
-  when 'generate'
+  when 'generate', 'list'
     path = pwd + '/' + options.d
 
     if !fs.existsSync path
@@ -47,11 +47,27 @@ switch command
     console.log 'Found ' + dirContents.length + ' translation files...' + "\n"
 
     for val in dirContents
-      processCSV path, val
+      processCSV path, val, command, options
+
 
   when 'reverse'
+    console.log 'reverse is currently ready'
+    process.exit 0
+
     if !options.input || !options.output || !options.inputLangName
       console.log 'Error: options -input and -output and -inputLangName required' + "\n"
       process.exit 1
 
     processJSON pwd, options.input, options.inputLangName, options.output
+
+
+
+
+
+
+
+
+
+
+
+

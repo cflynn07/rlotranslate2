@@ -1,15 +1,19 @@
-format = 'Format: rlotranslate [generate/reverse] [options]' + "\n"
+format = 'Format: rlotranslate [generate/reverse/list] [options]' + "\n"
 
 config =
   availableCommands: [
     'generate'
     'reverse'
+    'list'
   ]
   optionDefaults:
     d:             'i18n_masters'
     h:             false
     v:             false
     o:             false
+
+    #selected output locales
+    l:             false
 
     input:         false
     output:        false

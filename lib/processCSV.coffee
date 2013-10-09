@@ -2,7 +2,7 @@ csv = require 'csv'
 fs  = require 'fs'
 _   = require 'underscore'
 
-module.exports = (path, file) ->
+module.exports = (path, file, command, options) ->
 
   #filename + path where output will be stored
   fileName               = ''
@@ -91,11 +91,34 @@ module.exports = (path, file) ->
 
 
   .on 'end', (count) ->
-    for property, value of languageObjects
-      newFile = resultPath + '/' + fileName.replace('$', property)
-      console.log file + ' --> ' + newFile + "\n"
-      fs.writeFileSync newFile, JSON.stringify(value, null, 2)
+    for propLangCode, value of languageObjects
 
+      if _.isString options.l
+        outputLocales = options.l.split ','
+
+      if command is 'list'
+        i = 0
+        console.log 'File: ' + path + '/' + file + ' has ' + value.lexicon.entries.length + ' keys and the following locales:'
+        for prop, value of languageObjects
+          console.log i + ': ' + prop
+          i++
+        process.exit 0
+
+      else if command is 'generate'
+
+        newFile = resultPath + '/' + fileName.replace('$', propLangCode)
+
+        outputFile = () ->
+          console.log file + ' --> ' + newFile + "\n"
+          fs.writeFileSync newFile, JSON.stringify(value, null, 2)
+
+        if _.isArray outputLocales
+          if outputLocales.indexOf(propLangCode) != -1
+            outputFile()
+          else
+            console.log file + ' --> ' + newFile + " [SKIPPING] \n"
+        else
+          outputFile()
 
   .on 'error', (error) ->
     console.log 'error'
