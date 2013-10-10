@@ -74,20 +74,20 @@ module.exports = (path, file, command, options) ->
         specialKeyRowParts = row[0].split '_'
 
         for propLanguageCode, langCodeIndex of languageObjectsIndexes
-          if _.isUndefined languageObjects[propLanguageCode][specialKeyRowParts[0]]
-            languageObjects[propLanguageCode][specialKeyRowParts[0]] = {}
-            languageObjects[propLanguageCode][specialKeyRowParts[0]][specialKeyRowParts[1]] = row[langCodeIndex + 1]
+          if _.isUndefined languageObjects[propLanguageCode]['lexicon'][specialKeyRowParts[0]]
+            languageObjects[propLanguageCode]['lexicon'][specialKeyRowParts[0]] = {}
+            languageObjects[propLanguageCode]['lexicon'][specialKeyRowParts[0]][specialKeyRowParts[1]] = row[langCodeIndex + 1]
 
           else
-            if _.isUndefined languageObjects[propLanguageCode][specialKeyRowParts[0]][specialKeyRowParts[1]]
-              languageObjects[propLanguageCode][specialKeyRowParts[0]][specialKeyRowParts[1]] = row[langCodeIndex + 1]
-            else if _.isString languageObjects[propLanguageCode][specialKeyRowParts[0]][specialKeyRowParts[1]]
-              languageObjects[propLanguageCode][specialKeyRowParts[0]][specialKeyRowParts[1]] = [
-                languageObjects[propLanguageCode][specialKeyRowParts[0]][specialKeyRowParts[1]]
+            if _.isUndefined languageObjects[propLanguageCode]['lexicon'][specialKeyRowParts[0]][specialKeyRowParts[1]]
+              languageObjects[propLanguageCode]['lexicon'][specialKeyRowParts[0]][specialKeyRowParts[1]] = row[langCodeIndex + 1]
+            else if _.isString languageObjects[propLanguageCode]['lexicon'][specialKeyRowParts[0]][specialKeyRowParts[1]]
+              languageObjects[propLanguageCode]['lexicon'][specialKeyRowParts[0]][specialKeyRowParts[1]] = [
+                languageObjects[propLanguageCode]['lexicon'][specialKeyRowParts[0]][specialKeyRowParts[1]]
                 row[langCodeIndex + 1]
               ]
-            else if _.isArray languageObjects[propLanguageCode][specialKeyRowParts[0]][specialKeyRowParts[1]]
-              languageObjects[propLanguageCode][specialKeyRowParts[0]][specialKeyRowParts[1]].push row[langCodeIndex + 1]
+            else if _.isArray languageObjects[propLanguageCode]['lexicon'][specialKeyRowParts[0]][specialKeyRowParts[1]]
+              languageObjects[propLanguageCode]['lexicon'][specialKeyRowParts[0]][specialKeyRowParts[1]].push row[langCodeIndex + 1]
 
 
   .on 'end', (count) ->
