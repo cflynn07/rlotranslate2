@@ -17,10 +17,10 @@ https://docs.google.com/spreadsheet/ccc?key=0AtuQ0India0ndDdfS0xTZVZ3bDdkNnlqb2h
 Usage
 ----
 `
-#install
-sudo npm install rlotranslate -g
-#run
-rlotranslate generate
+  #install
+  sudo npm install rlotranslate -g
+  #run
+  rlotranslate generate
 `
 
 Requirements
