@@ -16,12 +16,12 @@ https://docs.google.com/spreadsheet/ccc?key=0AtuQ0India0ndDdfS0xTZVZ3bDdkNnlqb2h
 
 Usage
 ----
-<pre>
+`
 #install
 sudo npm install rlotranslate -g
 #run
 rlotranslate generate
-</pre>
+`
 
 Requirements
 -----------
